@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Processing</title>
+    <link rel="icon" href="../static/icons/image-processing-icon.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../static/css/styles_dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../static/js/script.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="title-text">
+            <span>Image Processing</span>
+            <span>Dashboard</span>
+        </div>
+        <button class="upload-button" onclick="openModal()">Upload Image</button>
+        <table class="dashboard-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Original Image</th>
+                    <th>Size in KB</th>
+                    <th>Processed Image</th>
+                    <th>Size in KB</th>
+                    <th>Upload Date</th>
+                    <th>Description</th>
+                    <th>Download</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in metadata %}
+                <tr>
+                    <td>{{ data[0] }}</td>
+                    <td>{{ data[1] }}</td>
+                    <td>{{ data[2] }}</td>
+                    <td>{{ data[3] }}</td>
+                    <td>{{ data[4] }}</td>
+                    <td>{{ data[5] }}</td>
+                    <td>{{ data[6] }}</td>
+                    <td><a href="{{ url_for('download_file', filename=data[3]) }}" download><i class="fas fa-download"></i></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+     <!-- The Modal -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h1>Upload Image</h1>
+            <form method="post" action="/upload" enctype="multipart/form-data">
+                <label for="file">Choose an image:</label>
+                <input type="file" id="file" name="file" accept=".jpg, .jpeg, .png" required>
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" placeholder="Enter description" required></textarea>
+                <div class="modal-buttons">
+                    <input type="submit" value="Upload" class="submit-button">
+                    <button type="button" class="cancel-button" onclick="closeModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../static/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+# Virtual environment
+venv/
+
+# Python cache files
+__pycache__/
+
+# Ignore images directory
+images/
+
+# Environment variables file
+.env
