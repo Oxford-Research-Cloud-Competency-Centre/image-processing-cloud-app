@@ -9,7 +9,7 @@ environment-defaults:
 global:
   application_name: image-processing-cloud-app
   branch: null
-  default_ec2_keyname: ar-fsl-keypair
+  default_ec2_keyname: {YOUR_SSH_KEYPAIR_NAME}
   default_platform: Python 3.11 running on 64bit Amazon Linux 2023
   default_region: eu-west-2
   include_git_submodules: true
